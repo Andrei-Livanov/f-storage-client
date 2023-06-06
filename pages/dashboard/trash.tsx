@@ -3,7 +3,8 @@ import { Files } from '@/modules/Files';
 import { Layout } from '@/layouts/Layout';
 import { checkAuth } from '@/utils/checkAuth';
 import { FileItem } from '@/api/dto/files.dto';
-import { GetServerSidePropsContext, NextPage } from 'next';
+import { GetServerSidePropsContext } from 'next';
+import { NextPageWithLayout } from '@/pages/_app';
 import { DashboardLayout } from '@/layouts/DashboardLayout';
 
 import * as Api from '@/api';
@@ -12,7 +13,7 @@ interface Props {
   items: FileItem[];
 }
 
-const DashboardTrash: NextPage<Props> = ({ items }) => {
+const DashboardTrash: NextPageWithLayout<Props> = ({ items }) => {
   return (
     <DashboardLayout>
       <Files items={items} />

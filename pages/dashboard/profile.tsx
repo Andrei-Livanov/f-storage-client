@@ -3,8 +3,9 @@ import { Button } from 'antd';
 import { User } from '@/api/dto/auth.dto';
 import { Layout } from '@/layouts/Layout';
 import { checkAuth } from '@/utils/checkAuth';
+import { GetServerSidePropsContext } from 'next';
 import styles from '@/styles/Profile.module.scss';
-import { GetServerSidePropsContext, NextPage } from 'next';
+import { NextPageWithLayout } from '@/pages/_app';
 
 import * as Api from '@/api';
 
@@ -12,7 +13,7 @@ interface Props {
   userData: User;
 }
 
-const DashboardProfilePage: NextPage<Props> = ({ userData }) => {
+const DashboardProfilePage: NextPageWithLayout<Props> = ({ userData }) => {
   const onClickLogout = () => {
     if (window.confirm('Вы действительно хотите выйти?')) {
       Api.auth.logout();

@@ -21,7 +21,7 @@ export const FileList: React.FC<FileListProps> = ({ items, onFileSelect }) => {
       ))}
 
       <Selecto
-        container=".files"
+        container={null}
         selectableTargets={['.file']}
         selectByClick
         hitRate={10}

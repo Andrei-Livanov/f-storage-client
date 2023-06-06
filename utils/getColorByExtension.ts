@@ -12,6 +12,6 @@ const extColor = {
 export type Extension = keyof typeof extColor;
 export type Color = (typeof extColor)[Extension];
 
-export const getColorByExtension = (ext: string): Color => {
+export const getColorByExtension = (ext: Extension): Color => {
   return extColor[ext];
 };
