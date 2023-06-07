@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactElement } from 'react';
 import { Button } from 'antd';
 import { User } from '@/api/dto/auth.dto';
 import { Layout } from '@/layouts/Layout';
@@ -44,7 +44,7 @@ const DashboardProfilePage: NextPageWithLayout<Props> = ({ userData }) => {
   );
 };
 
-DashboardProfilePage.getLayout = (page: React.ReactNode) => {
+DashboardProfilePage.getLayout = (page: ReactElement) => {
   return <Layout title="Dashboard / Профиль">{page}</Layout>;
 };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactElement } from 'react';
 import { Files } from '@/modules/Files';
 import { Layout } from '@/layouts/Layout';
 import { checkAuth } from '@/utils/checkAuth';
@@ -21,7 +21,7 @@ const DashboardPage: NextPageWithLayout<Props> = ({ items }) => {
   );
 };
 
-DashboardPage.getLayout = (page: React.ReactNode) => {
+DashboardPage.getLayout = (page: ReactElement) => {
   return <Layout title="Dashboard / Главная">{page}</Layout>;
 };
 
