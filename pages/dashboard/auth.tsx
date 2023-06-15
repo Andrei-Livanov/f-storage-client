@@ -1,10 +1,10 @@
 import { Tabs } from 'antd';
 import Head from 'next/head';
-import { NextPage } from 'next';
+import { NextPageWithLayout } from '@/pages/_app';
 import { LoginForm } from '@/components/auth/LoginForm';
 import { RegisterForm } from '@/components/auth/RegisterForm';
 
-const AuthPage: NextPage = () => {
+const AuthPage: NextPageWithLayout = () => {
   return (
     <>
       <Head>

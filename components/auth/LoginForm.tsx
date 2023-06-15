@@ -43,6 +43,7 @@ export const LoginForm: React.FC = () => {
         <Form.Item
           label="E-Mail"
           name="email"
+          initialValue="test@mail.ru"
           rules={[
             {
               required: true,
@@ -56,6 +57,7 @@ export const LoginForm: React.FC = () => {
         <Form.Item
           label="Пароль"
           name="password"
+          initialValue="123"
           rules={[
             {
               required: true,
