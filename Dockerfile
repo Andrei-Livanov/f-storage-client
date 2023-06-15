@@ -1,22 +1,27 @@
-FROM node:alpine as dependencies
-WORKDIR /f-storage-client
+FROM node:18-alpine as dependencies
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install --frozen-lockfile
 
-FROM node:alpine as builder
-WORKDIR /f-storage-client
+FROM node:18-alpine as builder
+WORKDIR /app
 COPY . .
-COPY --from=dependencies /f-storage-client/node_modules ./node_modules
+COPY --from=dependencies /app/node_modules ./node_modules
+
+ENV NEXT_TELEMETRY_DISABLED 1
+
 RUN npm run build
 
-FROM node:alpine as runner
-WORKDIR /f-storage-client
+FROM node:18-alpine as runner
+WORKDIR /app
 ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED 1
 
-COPY --from=builder /f-storage-client/public ./public
-COPY --from=builder /f-storage-client/package.json ./package.json
-COPY --from=builder /f-storage-client/.next ./.next
-COPY --from=builder /f-storage-client/node_modules ./node_modules
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
 
 EXPOSE 3000
 CMD ["npm", "start"]
